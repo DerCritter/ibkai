@@ -649,3 +649,21 @@ section[id] { scroll-margin-top: calc(var(--sec-pad) * -1 + 20px); }
 .devices { gap: 0; }
 .devices li { padding: 0; border: 0; background: none; color: var(--blue); }
 .devices li + li::before { content: "·"; margin: 0 .9em; color: var(--ink-3); }
+
+/* ---------- IBK AI-VR en móvil: menos tarjetas, lectura clara ---------- */
+@media (max-width: 640px) {
+  /* las 4 ventajas: lista sencilla sin tarjetas ni números (no compiten con los pasos 1-2-3) */
+  .pillars { gap: 0; margin-bottom: 28px; border-top: 1px solid var(--hair); }
+  .pillars .pillar { background: none; border: 0; border-bottom: 1px solid var(--hair); border-radius: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 12px 0; gap: 2px; }
+  .pillars .pillar::before, .pillars .pillar .mono { display: none; }
+  .pillars .pillar b { font-size: 1rem; }
+  .pillars .pillar span:not(.mono) { font-size: .86rem; }
+  /* opciones de la demo: filas compactas (título + etiqueta), sin descripción */
+  .options { gap: 8px; }
+  .option { padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+  .option b { flex: 1; font-size: .95rem; }
+  .option span { display: none; }
+  .option .tag { margin-top: 0; flex: none; }
+  .option--persona .glyph { width: 30px; height: 30px; border-radius: 9px; margin: 0; font-size: .9rem; flex: none; }
+  .option:hover { transform: none; }
+}

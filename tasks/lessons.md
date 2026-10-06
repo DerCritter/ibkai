@@ -32,3 +32,4 @@ Leer al inicio. Tras cada corrección del usuario, añadir una entrada.
 - Las capturas del panel con viewport emulado a veces salen reducidas o sin vídeo: verificar también con mediciones del DOM.
 - Vídeos en bucle: **no usar ping-pong** (ida y vuelta) en esta web; bucle hacia delante con fundido corto entre final e inicio.
 - `python3 -m http.server` no responde a peticiones Range: el tráiler no se podía adelantar. Usar `serve.py` (con Range). En Vercel funciona sin cambios.
+- Móvil: secciones con muchas tarjetas apiladas no se entienden (IBK AI-VR). En ≤640 px convertir tarjetas en lista con hairlines y opciones en filas compactas (sin descripción); no mezclar numeraciones (01–04 junto a pasos 1–3).
