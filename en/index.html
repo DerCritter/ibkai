@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KommunikationsTrainer | IBK AI</title>
+  <meta name="description" content="Practice realistic conversations with AI personalities and get objective feedback instantly. In the browser, on your smartphone and in virtual reality.">
+  <meta name="theme-color" content="#eef4fa">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="de" href="../">
+  <link rel="alternate" hreflang="en" href="./">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KommunikationsTrainer | IBK AI">
+  <meta property="og:description" content="Practice conversations with AI. Real-time feedback, rhetoric score, web and VR.">
+  <meta property="og:image" content="../assets/img/hero-poster.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=24">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="../assets/js/main.js?v=9" defer></script>
+</head>
+<body>
+
+  <!-- Fondo vivo: bokeh azul hielo, como el logo animado -->
+  <div class="aura" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="nav__logo" href="#top" aria-label="KommunikationsTrainer, home"><img class="brand-logo" src="../assets/img/ibk-ai-logo-color.svg?v=2" alt="IBK AI" width="1212" height="362"></a>
+      <nav class="nav__links" aria-label="Main navigation">
+        <a href="#portal">Portal</a>
+        <a href="#ibk-ai-vr">IBK AI-VR</a>
+        <a href="#online-kurse">Online courses</a>
+        <a href="#kontakt">Contact</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Language">
+        <a class="lang__opt" href="../" hreflang="de" lang="de">DE</a>
+        <a class="lang__opt is-on" href="./" hreflang="en" lang="en" aria-current="true">EN</a>
+      </div>
+      <a class="btn btn--ghost nav__demo" href="https://kommunikationstrainer.ai/demo">Demo</a>
+      <a class="btn btn--primary nav__app" href="https://kommunikationstrainer.ai/login">Open app</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menú móvil (fuera del header: el backdrop-filter atraparía el overlay fixed) -->
+  <div class="menu" id="menu" data-menu hidden>
+    <nav class="menu__links" aria-label="Mobile navigation">
+      <a href="#portal"><span class="mono">01</span>Portal</a>
+      <a href="#ibk-ai-vr"><span class="mono">02</span>IBK AI-VR</a>
+      <a href="#online-kurse"><span class="mono">03</span>Interactive online courses</a>
+      <a href="#trailer"><span class="mono">04</span>Trailer</a>
+      <a href="#kontakt"><span class="mono">05</span>Contact</a>
+    </nav>
+    <div class="lang lang--menu" role="group" aria-label="Language">
+      <a class="lang__opt" href="../" hreflang="de" lang="de">Deutsch</a>
+      <a class="lang__opt is-on" href="./" hreflang="en" lang="en" aria-current="true">English</a>
+    </div>
+    <div class="menu__ctas">
+      <a class="btn btn--primary btn--lg" href="https://kommunikationstrainer.ai/login">Start web app <span aria-hidden="true">→</span></a>
+      <a class="btn btn--glass btn--lg" href="https://kommunikationstrainer.ai/demo">Request a demo</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO: logo animado a sangre ============ -->
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" data-src-lg="../assets/video/logo-loop-1920.mp4" data-src-sm="../assets/video/logo-loop-1280.mp4"
+               poster="../assets/img/hero-poster.jpg" muted loop playsinline autoplay preload="auto" disablepictureinpicture></video>
+      </div>
+      <div class="hero__fade" aria-hidden="true"></div>
+      <div class="hero__content wrap">
+        <p class="eyebrow reveal" style="--d:.1s">AI conversation trainer · Web · Mobile · VR</p>
+        <h1 class="hero__title">
+          <span class="line reveal" style="--d:.2s">Speak with confidence.</span>
+          <span class="line reveal" style="--d:.32s"><em>Trained with AI.</em></span>
+        </h1>
+        <p class="hero__lead reveal" style="--d:.5s">KommunikationsTrainer simulates realistic conversations with AI personalities and gives you objective feedback instantly. So every important conversation has been rehearsed before it counts.</p>
+        <div class="hero__ctas reveal" style="--d:.62s">
+          <a class="btn btn--primary btn--lg" href="https://kommunikationstrainer.ai/login">Start web app <span aria-hidden="true">→</span></a>
+          <a class="btn btn--glass btn--lg" href="#trailer" data-play-trailer><span class="play-dot" aria-hidden="true"></span>Watch the trailer <span class="mono">1:48</span></a>
+        </div>
+        <ul class="hero__facts reveal" style="--d:.75s" aria-label="Key features">
+          <li><b>Real-time</b>feedback</li>
+          <li><b>Rhetoric</b>score</li>
+          <li><b>7</b>AI personalities</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- Cinta de escenarios reales de la app (decorativa) -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Annual review</span><span>Critical feedback</span><span>Termination talk</span><span>Salary negotiation</span><span>Home savings</span><span>Disability insurance</span><span>Complaint handling</span><span>Custom scenarios</span>
+        <span>Annual review</span><span>Critical feedback</span><span>Termination talk</span><span>Salary negotiation</span><span>Home savings</span><span>Disability insurance</span><span>Complaint handling</span><span>Custom scenarios</span>
+      </div>
+    </div>
+
+    <!-- ============ TRAILER ============ -->
+    <section class="trailer wrap" id="trailer" aria-labelledby="trailer-title">
+      <div class="section-head">
+        <p class="eyebrow reveal">Trailer</p>
+        <h2 class="h2 reveal" id="trailer-title" style="--d:.1s">Explained in 1:48.</h2>
+      </div>
+      <div class="screen reveal" style="--d:.15s">
+        <video class="screen__video" data-trailer data-src-lg="../assets/video/trailer-1080.mp4" data-src-sm="../assets/video/trailer-720.mp4"
+               poster="../assets/img/trailer-poster.jpg?v=2" playsinline preload="none" controls hidden></video>
+        <button class="screen__poster" type="button" data-play-trailer aria-label="Play trailer">
+          <img src="../assets/img/trailer-poster.jpg?v=2" alt="" width="1600" height="777" loading="lazy">
+          <span class="screen__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+          <span class="screen__meta mono">IBK AI · Trailer · 1:48</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEMA ============ -->
+    <section class="problem wrap" aria-labelledby="problem-title">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow reveal">Why</p>
+          <h2 class="h2 reveal" id="problem-title" style="--d:.1s">Good conversations take practice.<br><em>Not just theory.</em></h2>
+        </div>
+        <p class="lead reveal" style="--d:.2s">Classic trainings rarely stick. Those who can rehearse important conversations regularly and without risk become measurably more confident.</p>
+      </div>
+      <dl class="stats">
+        <div class="stat glass reveal"><dt><span class="count" data-count="90">90</span>%</dt><dd>of all sales trainings fail<sup>2</sup></dd></div>
+        <div class="stat glass reveal" style="--d:.08s"><dt><span class="count" data-count="41">41</span>%</dt><dd>are afraid of public speaking<sup>1</sup></dd></div>
+        <div class="stat glass reveal" style="--d:.16s"><dt><span class="count" data-count="46">46</span>%</dt><dd>of sales reps fail<sup>2</sup></dd></div>
+        <div class="stat glass reveal" style="--d:.24s"><dt><span class="count" data-count="200">200</span>%</dt><dd>cost of a bad hire<sup>3</sup></dd></div>
+      </dl>
+      <p class="sources mono">
+        Sources: <a href="https://de.statista.com/statistik/daten/studie/258499/umfrage/die-haeufigsten-aengste-der-menschen/" target="_blank" rel="noopener">1 Statista</a> ·
+        <a href="https://www.leadershipiq.com/blogs/leadershipiq/35354241-why-new-hires-fail-emotional-intelligence-vs-skills" target="_blank" rel="noopener">2 Leadership IQ</a> ·
+        <a href="https://www.enrich.org/blog/The-true-cost-of-employee-turnover-financial-wellness-enrich" target="_blank" rel="noopener">3 Enrich</a>
+      </p>
+    </section>
+
+    <!-- ============ IBK AI-VR · Conversation trainer: tarjetas de la web original + demo interactiva ============ -->
+    <section class="how wrap" id="ibk-ai-vr" aria-labelledby="how-title">
+      <div class="section-head">
+        <p class="eyebrow reveal">IBK AI-VR · Conversation trainer</p>
+        <h2 class="h2 reveal" id="how-title" style="--d:.1s">Three steps to the conversation.</h2>
+        <p class="lead reveal" style="--d:.2s">Improve your communication skills with the AI-powered conversation trainer. Practise difficult conversations in a safe environment. Try it right here.</p>
+      </div>
+      <ul class="pillars">
+        <li class="pillar glass reveal"><span class="mono">01</span><b>Individual scenarios</b><span>Train with tailor-made conversation situations.</span></li>
+        <li class="pillar glass reveal" style="--d:.06s"><span class="mono">02</span><b>Communication analysis</b><span>AI-powered analysis of your speaking style.</span></li>
+        <li class="pillar glass reveal" style="--d:.12s"><span class="mono">03</span><b>VR &amp; web support</b><span>Flexible training on all platforms.</span></li>
+        <li class="pillar glass reveal" style="--d:.18s"><span class="mono">04</span><b>Real-time feedback</b><span>Instant feedback on your performance.</span></li>
+      </ul>
+
+
+      <div class="demo glass glass--strong reveal" data-demo style="--d:.15s">
+        <ol class="steps" aria-label="Steps">
+          <li class="is-active" data-step-label="1"><span>1</span><b>Scenario</b></li>
+          <li data-step-label="2"><span>2</span><b>Personality</b></li>
+          <li data-step-label="3"><span>3</span><b>Conversation</b></li>
+        </ol>
+
+        <!-- Paso 1 -->
+        <div class="demo__pane is-active" data-pane="1">
+          <div class="demo__bar">
+            <h3>Choose a topic</h3>
+            <div class="chips" role="group" aria-label="Filter category">
+              <button class="chip is-on" type="button" data-filter="all" aria-pressed="true">All <i>8</i></button>
+              <button class="chip" type="button" data-filter="team" aria-pressed="false">Employees <i>5</i></button>
+              <button class="chip" type="button" data-filter="sales" aria-pressed="false">Sales <i>3</i></button>
+            </div>
+          </div>
+          <div class="options options--2">
+            <button class="option" type="button" data-cat="team" data-value="Annual review" data-script="annual"><b>Annual review</b><span>As a manager, you assess an employee's performance.</span><em class="tag tag--team">Employees</em></button>
+            <button class="option" type="button" data-cat="team" data-value="Critical feedback"><b>Critical feedback</b><span>As a manager, you give critical feedback.</span><em class="tag tag--team">Employees</em></button>
+            <button class="option" type="button" data-cat="team" data-value="Termination (by manager)"><b>Termination (by manager)</b><span>As a manager, you deliver a termination.</span><em class="tag tag--team">Employees</em></button>
+            <button class="option" type="button" data-cat="team" data-value="Resignation (by employee)"><b>Resignation (by employee)</b><span>As a manager, you respond to a resignation.</span><em class="tag tag--team">Employees</em></button>
+            <button class="option" type="button" data-cat="team" data-value="Salary negotiation"><b>Salary negotiation</b><span>As a manager, you negotiate a salary increase.</span><em class="tag tag--team">Employees</em></button>
+            <button class="option" type="button" data-cat="sales" data-value="Home savings/investment savings"><b>Home savings/investment savings</b><span>As an advisor, you recommend investment products.</span><em class="tag tag--sales">Sales</em></button>
+            <button class="option" type="button" data-cat="sales" data-value="Disability insurance"><b>Disability insurance</b><span>As an advisor, you explain disability insurance.</span><em class="tag tag--sales">Sales</em></button>
+            <button class="option" type="button" data-cat="sales" data-value="Complaint handling"><b>Complaint handling</b><span>As customer service, you resolve a complaint.</span><em class="tag tag--sales">Sales</em></button>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="demo__pane" data-pane="2" hidden>
+          <div class="demo__bar"><h3>Choose a personality</h3><p class="demo__hint">Choose the personality of your counterpart.</p></div>
+          <div class="options options--3">
+            <button class="option option--persona" type="button" data-value="Random" data-random><i class="glyph">?</i><b>Random</b><span>Pick a random personality.</span></button>
+            <button class="option option--persona" type="button" data-value="The anxious/insecure one"><i class="glyph">◇</i><b>The anxious/insecure one</b><span>Needs a lot of reassurance and confirmation, asks many follow-up questions.</span></button>
+            <button class="option option--persona" type="button" data-value="The demanding/ambitious one"><i class="glyph">☆</i><b>The demanding/ambitious one</b><span>Has high expectations, is direct and demanding.</span></button>
+            <button class="option option--persona" type="button" data-value="The emotional one"><i class="glyph">♡</i><b>The emotional one</b><span>Reacts from the gut, can quickly become annoyed or enthusiastic.</span></button>
+            <button class="option option--persona" type="button" data-value="The cost-conscious one"><i class="glyph">€</i><b>The cost-conscious one</b><span>Focused on prices and costs, constantly compares with other providers.</span></button>
+            <button class="option option--persona" type="button" data-value="The critical one"><i class="glyph">!</i><b>The critical one</b><span>Skeptical, asks many questions, looks for gaps in logic.</span></button>
+            <button class="option option--persona" type="button" data-value="The rational/analytical one"><i class="glyph">◎</i><b>The rational/analytical one</b><span>Fact-oriented and objective, demands clear arguments and data.</span></button>
+          </div>
+          <button class="demo__back" type="button" data-back="1">← Change scenario</button>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="demo__pane" data-pane="3" hidden>
+          <div class="call">
+            <div class="call__card">
+              <div class="call__avatar"><img src="../assets/img/avatar-anna.jpg" alt="AI avatar Anna Richter" width="240" height="240" loading="lazy"><span class="call__ring" aria-hidden="true"></span></div>
+              <b class="call__name">Anna Richter</b>
+              <span class="call__meta" data-call-scenario>Annual review</span>
+              <span class="call__persona mono" data-call-persona>The demanding/ambitious one</span>
+              <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <p class="call__note mono">AI system · voice and avatar are AI-generated</p>
+            </div>
+            <div class="call__chat" data-chat aria-live="polite"></div>
+          </div>
+          <div class="demo__foot">
+            <button class="demo__back" type="button" data-back="2">← Change personality</button>
+            <a class="btn btn--primary" href="https://kommunikationstrainer.ai/login">Try it yourself <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KI-FEEDBACK: recreación de la KI-Bewertung real ============ -->
+    <section class="feedback wrap" id="feedback" aria-labelledby="fb-title">
+      <div class="feedback__copy">
+        <p class="eyebrow reveal">AI feedback</p>
+        <h2 class="h2 reveal" id="fb-title" style="--d:.1s">Objectively assessed.<br><em>Instantly improved.</em></h2>
+        <p class="lead reveal" style="--d:.2s">After every conversation, the AI analyses structure, tone and argumentation. You get an overall score, strengths, improvements and concrete tips for next time. Exportable as PDF and shareable with your team.</p>
+        <ul class="suggest reveal" style="--d:.3s" aria-label="AI improvement suggestion">
+          <li><span class="mono">Structure</span>Optimise objection handling</li>
+          <li><span class="mono">Tone</span>More commitment when closing</li>
+          <li><span class="mono">Argumentation</span>Stronger benefit communication</li>
+        </ul>
+      </div>
+
+      <article class="report glass glass--strong reveal" style="--d:.15s" aria-label="Example of an AI assessment">
+        <header class="report__head">
+          <div><b>AI assessment</b><span>Annual review · The demanding/ambitious one</span></div>
+          <span class="mono report__pdf">PDF</span>
+        </header>
+        <div class="score">
+          <svg class="score__ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="52" class="score__track"/>
+            <circle cx="60" cy="60" r="52" class="score__bar" pathLength="100"/>
+          </svg>
+          <div class="score__value"><b data-score>9</b><span>/10</span></div>
+          <p class="score__label mono">Overall score</p>
+        </div>
+        <div class="report__cols">
+          <div class="report__box report__box--good">
+            <p class="mono">Strengths</p>
+            <ul><li>Created an appreciative and motivating atmosphere.</li><li>Invited self-reflection, actively asked for their perspective.</li><li>Delivered critical feedback respectfully and constructively.</li></ul>
+          </div>
+          <div class="report__box report__box--improve">
+            <p class="mono">Improvements</p>
+            <ul><li>Name more concrete examples for development.</li><li>A short summary at the end of the conversation.</li><li>Define concrete goals for the coming year together.</li></ul>
+          </div>
+        </div>
+        <div class="report__detail">
+          <span>Appreciation and recognition</span><b class="mono">10/10</b>
+          <i class="bar" style="--v:1"></i>
+        </div>
+        <div class="report__tips">
+          <p class="mono">Tips for the future</p>
+          <p>At the end, briefly summarise the key insights and development goals once more.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ KI + COMMUNITY: las tres fuentes de feedback de la web original ============ -->
+    <section class="community wrap" id="community" aria-labelledby="community-title">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow reveal">Community</p>
+          <h2 class="h2 reveal" id="community-title" style="--d:.1s">AI and community.<br><em>For your presentation.</em></h2>
+        </div>
+        <p class="lead reveal" style="--d:.2s">KommunikationsTrainer gives you everything you need: an objective rhetoric score, AI-powered feedback and personal feedback from other members.</p>
+      </div>
+      <ol class="sources3">
+        <li class="glass reveal"><span class="mono">01</span><b>Rhetoric score</b><span>Objective and comparable: see how you grow from session to session.</span></li>
+        <li class="glass reveal" style="--d:.08s"><span class="mono">02</span><b>AI feedback</b><span>Structure, tone and argumentation, right after every conversation.</span></li>
+        <li class="glass reveal" style="--d:.16s"><span class="mono">03</span><b>Community</b><span>Personal feedback from people who practise just like you.</span></li>
+      </ol>
+    </section>
+
+    <!-- ============ ÄNGSTE VERLIEREN: Redeangst + VR (web original) ============ -->
+    <section class="split wrap" id="redeangst" aria-labelledby="fear-title">
+      <figure class="split__media reveal">
+        <video class="split__video" data-section-video data-src-lg="../assets/video/redeangst-900.mp4?v=2" data-src-sm="../assets/video/redeangst-600.mp4?v=2" poster="../assets/img/redeangst-poster.jpg?v=2" muted loop playsinline preload="none" width="1200" height="900" aria-label="Man practising a presentation in front of an audience"></video>
+        <figcaption class="mono">Presenting with impact</figcaption>
+      </figure>
+      <div class="split__copy">
+        <p class="eyebrow reveal">Presenting</p>
+        <h2 class="h2 reveal" id="fear-title" style="--d:.1s">Lose your fear.<br><em>Win people over.</em></h2>
+        <p class="lead reveal" style="--d:.2s">KommunikationsTrainer helps you overcome your fear of public speaking and talk confidently in front of an audience. With personalised exercises and AI-powered feedback, you grow more confident step by step.</p>
+        <p class="lead reveal" style="--d:.26s">In virtual reality you rehearse presentations under real conditions, in front of an audience that reacts.</p>
+      </div>
+    </section>
+
+    <!-- ============ INTERAKTIVE ONLINE-KURSE · Training-to-go (web original) ============ -->
+    <section class="split split--reverse wrap" id="online-kurse" aria-labelledby="courses-title">
+      <figure class="split__media reveal">
+        <video class="split__video" data-section-video data-src-lg="../assets/video/training-900.mp4" data-src-sm="../assets/video/training-600.mp4" poster="../assets/img/training-poster.jpg" muted loop playsinline preload="none" width="1200" height="900" aria-label="Training on a laptop with a virtual audience"></video>
+        <figcaption class="mono">Training-to-go · Desktop · Tablet · Smartphone</figcaption>
+      </figure>
+      <div class="split__copy">
+        <p class="eyebrow reveal">Interactive online courses</p>
+        <h2 class="h2 reveal" id="courses-title" style="--d:.1s">Train anywhere.<br><em>And anytime.</em></h2>
+        <p class="lead reveal" style="--d:.2s">The platform is optimised for every device, whether desktop, tablet or smartphone. Turn short breaks into effective practice sessions.</p>
+        <ul class="devices reveal" style="--d:.28s" aria-label="Devices">
+          <li><b>Desktop</b></li><li><b>Tablet</b></li><li><b>Smartphone</b></li><li><b>VR</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PORTAL · Smart trainieren, digital überzeugen (web original) ============ -->
+    <section class="portal wrap" id="portal" aria-labelledby="portal-title">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow reveal">Portal · For teams and companies</p>
+          <h2 class="h2 reveal" id="portal-title" style="--d:.1s">Train smart.<br><em>Convince digitally.</em></h2>
+        </div>
+        <p class="lead reveal" style="--d:.2s">Use your time effectively: with KommunikationsTrainer you set goals and improve your communication through data-driven feedback.</p>
+      </div>
+      <ul class="portal__grid">
+        <li class="glass reveal"><span class="mono">01</span><b>Organise teams in the portal</b></li>
+        <li class="glass reveal" style="--d:.05s"><span class="mono">02</span><b>Track your personal development</b></li>
+        <li class="glass reveal" style="--d:.1s"><span class="mono">03</span><b>Data-driven feedback on your talk</b></li>
+        <li class="glass reveal" style="--d:.15s"><span class="mono">04</span><b>Cost-effective and efficient training</b></li>
+        <li class="glass reveal" style="--d:.2s"><span class="mono">05</span><b>Presentations in virtual reality under real conditions</b></li>
+        <li class="glass reveal" style="--d:.25s"><span class="mono">06</span><b>Access your database anytime, anywhere</b></li>
+      </ul>
+    </section>
+
+    <!-- ============ ESCALADO + WIRKUNG (datos del tráiler) ============ -->
+    <section class="impact" id="wirkung" aria-labelledby="impact-title">
+      <div class="impact__bg" aria-hidden="true"><img src="../assets/img/scene-2.jpg" alt="" loading="lazy" width="1600" height="777"></div>
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow reveal">Impact</p>
+          <h2 class="h2 reveal" id="impact-title" style="--d:.1s">More practice.<br><em>Measurably more closings.</em></h2>
+        </div>
+        <div class="scale glass reveal" style="--d:.15s">
+          <div class="scale__item"><b>1 to 3</b><span>workshops</span></div>
+          <div class="scale__arrow" aria-hidden="true"><svg viewBox="0 0 120 24"><path d="M2 12h110m-10-9 10 9-10 9"/></svg><b>×20</b></div>
+          <div class="scale__item"><b>50 to 100</b><span>IBK AI cycles</span></div>
+        </div>
+        <div class="results">
+          <div class="result glass reveal"><b>+3 %</b><span>closing rate</span></div>
+          <div class="result glass reveal" style="--d:.08s"><b>300 <i aria-hidden="true">→</i> 2,200</b><span>300 advisors, 2,200 additional closings</span></div>
+          <div class="result result--hero glass reveal" style="--d:.16s"><b>€0.75M</b><span>additional annual revenue</span></div>
+        </div>
+        <p class="footnote mono reveal">Example calculation for an institution with 300 advisors.</p>
+      </div>
+    </section>
+
+    <!-- ============ VISIÓN + CTA ============ -->
+    <section class="closing wrap" aria-labelledby="closing-title">
+      <div class="closing__card glass glass--strong reveal">
+        <p class="eyebrow">Our vision</p>
+        <p class="closing__quote">Helping people <em>communicate with confidence and composure</em> through software, artificial intelligence and the feedback of an engaged community.</p>
+        <h2 class="closing__title" id="closing-title">Ready for your first conversation?</h2>
+        <div class="closing__ctas">
+          <a class="btn btn--primary btn--lg" href="https://kommunikationstrainer.ai/login">Start web app <span aria-hidden="true">→</span></a>
+          <a class="btn btn--glass btn--lg" href="https://kommunikationstrainer.ai/demo">Request a demo</a>
+        </div>
+      </div>
+    </section>
+    <!-- ============ KONTAKT ============ -->
+    <section class="contact wrap" id="kontakt" aria-labelledby="contact-title">
+      <div class="contact__grid">
+        <div>
+          <p class="eyebrow reveal">Contact</p>
+          <h2 class="h2 reveal" id="contact-title" style="--d:.1s">Got questions?<br><em>We'd love to hear from you.</em></h2>
+        </div>
+        <div class="contact__card glass reveal" style="--d:.15s">
+          <a class="contact__mail" href="mailto:info@immblend.de?subject=KommunikationsTrainer%20(EN)">info@immblend.de</a>
+          <p class="contact__note">Write to us for a demo, an offer for your team or questions about the platform.</p>
+          <div class="contact__ctas">
+            <a class="btn btn--primary btn--lg" href="mailto:info@immblend.de?subject=KommunikationsTrainer%20(EN)">Send an email <span aria-hidden="true">→</span></a>
+            <a class="btn btn--glass btn--lg" href="https://www.linkedin.com/company/prezp" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__brand">
+        <img class="brand-logo" src="../assets/img/ibk-ai-logo-color.svg?v=2" alt="IBK AI" width="1212" height="362">
+        <p>KommunikationsTrainer. AI and community for your communication.</p>
+      </div>
+      <nav class="footer__col" aria-label="Legal">
+        <span class="mono">Legal</span>
+        <a href="https://kommunikationstrainer.ai/impressum">Impressum</a>
+        <a href="https://kommunikationstrainer.ai/datenschutz">Privacy</a>
+        <a href="https://kommunikationstrainer.ai/cookie-policy">Cookie policy</a>
+        <a href="https://kommunikationstrainer.ai/agb">Terms</a>
+      </nav>
+      <nav class="footer__col" aria-label="Contact">
+        <span class="mono">Contact</span>
+        <a href="https://www.linkedin.com/company/prezp" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.bescheinigung-forschungszulage.de/bsfz-siegel" target="_blank" rel="noopener">BSFZ seal Research &amp; Development</a>
+      </nav>
+      <p class="footer__copy mono">© <span data-year>2026</span> KommunikationsTrainer · Powered by <a href="https://immblend.tech/" target="_blank" rel="noopener">ImmBlend GmbH</a></p>
+    </div>
+  </footer>
+</body>
+</html>
