@@ -3,6 +3,8 @@
 Rediseño propuesto de **kommunikationstrainer.ai** (producto de ImmBlend GmbH, marca **IBK AI**): entrenador de conversaciones y presentaciones con IA (web, móvil y VR).
 Debe estar al nivel de las webs de ImmBlend (Awwwards), pero con **identidad propia**: claro, cristal, azul hielo, sci-fi minimalista.
 
+Repo: https://github.com/DerCritter/ibkai (rama main; Vercel despliega al hacer push).
+
 Antes de empezar, lee `tasks/lessons.md`. Web en **alemán** (`/`) e **inglés** (`/en/`). Comunicación con el usuario: **español**.
 
 ## Estructura
