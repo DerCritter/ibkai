@@ -1,5 +1,7 @@
 # CLAUDE.md · Propuesta web KommunikationsTrainer (IBK AI)
 
+> **External developers / AI agents: read `AGENTS.md` and `HANDOFF.md` first** (German). This file is the design history in Spanish.
+
 Rediseño propuesto de **kommunikationstrainer.ai** (producto de ImmBlend GmbH, marca **IBK AI**): entrenador de conversaciones y presentaciones con IA (web, móvil y VR).
 Debe estar al nivel de las webs de ImmBlend (Awwwards), pero con **identidad propia**: claro, cristal, azul hielo, sci-fi minimalista.
 
@@ -21,6 +23,7 @@ assets/video/            logo-loop-{1920,1280}.mp4 (logo animado en bounce, sin 
                          training-{900,600}.mp4 (vídeo Veo del usuario para Online-Kurse, mismo tratamiento)
 ```
 - Fuentes: tráiler `../ibkai_ trailer/mp4_export/IBKAI-Trailer_V3.mp4` (1:48), logo animado (Veo) en Downloads, logo oficial `../ib_kommunikationstrainer_AI/exports/IBKAI_PNG_SVG/IBKAI_LOGO_SVG.svg`.
+- Entrega: `HANDOFF.md` (programador) + `AGENTS.md` (reglas para su IA) + `tools/check.py` (también como GitHub Action). Tag `handover-2026-10-08`.
 - Servidor: `python3 serve.py 5180` en el **panel Terminal** (http.server de Python no soporta Range y los vídeos no se pueden adelantar) (Bash en segundo plano se corta). Caché: subir `?v=` de style.css / main.js en **ambos** HTML.
 
 ## Dirección de arte (decidida con el usuario)
