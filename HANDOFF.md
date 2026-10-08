@@ -1,10 +1,10 @@
 # Übergabe · KommunikationsTrainer Landingpage (IBK AI)
 
-Statische Website (HTML, CSS, Vanilla-JS). Kein Build-Schritt, keine Abhängigkeiten. Alle Pfade sind relativ: Der Repo-Inhalt wird 1:1 als Webroot ausgeliefert.
+Statische Website (HTML, CSS, Vanilla-JS). Kein Build-Schritt, keine Abhängigkeiten, keine externen Requests (Schriften liegen lokal). Der Repo-Inhalt wird 1:1 als Webroot von **https://kommunikationstrainer.de** ausgeliefert.
 
-Stand der Übergabe: Git-Tag `handover-2026-10-08`. Bei Problemen immer zuerst dagegen vergleichen (`git diff handover-2026-10-08`).
+Übergabestand: Git-Tag `handover-2026-10-08`. Bei Problemen immer zuerst dagegen vergleichen (`git diff handover-2026-10-08`).
 
-Regeln für KI-Assistenten und Code-Agenten: **`AGENTS.md`**. `CLAUDE.md` und `tasks/lessons.md` sind die Design-Historie auf Spanisch (nur als Hintergrund).
+Regeln für KI-Assistenten und Code-Agenten: **`AGENTS.md`**. `CLAUDE.md` und `tasks/lessons.md` sind die Design-Historie auf Spanisch (nur Hintergrund).
 
 ---
 
@@ -12,52 +12,68 @@ Regeln für KI-Assistenten und Code-Agenten: **`AGENTS.md`**. `CLAUDE.md` und `t
 ```
 python3 tools/check.py
 ```
-Prüft lokale Verweise, DE/EN-Gleichstand, die von `main.js` benötigten `data-*`-Hooks, Cache-Versionen und Dateigrößen. Läuft zusätzlich als GitHub Action (`.github/workflows/check.yml`) bei Push und Pull Request.
+Prüft:
+- lokale Verweise,
+- DE/EN-Gleichstand und die `data-*`-Hooks von `main.js`,
+- Cache-Versionen,
+- die Domain in `canonical`, `hreflang`, Open Graph, `sitemap.xml` und `robots.txt`,
+- dass keine externen Schriften eingebunden sind,
+- die 404-Seite und die Dateigrößen.
 
-Lokal: `python3 serve.py` (Port 5180). Der Standard-`http.server` von Python beantwortet keine Range-Requests, dadurch lässt sich der Trailer nicht spulen. Das betrifft nur lokal: Vercel, Nginx usw. können das.
+Der Check läuft auch als GitHub Action (`.github/workflows/check.yml`).
+
+Lokal: `python3 serve.py` (Port 5180, mit Range-Support. Der Standard-`http.server` von Python kann nicht spulen).
+
+---
+
+## Für den Go-live
+
+### Domain
+- **Landingpage:** `kommunikationstrainer.de`. Alle absoluten URLs (canonical, hreflang, og:url, og:image, twitter:image, sitemap, robots) zeigen bereits dorthin.
+  - **Achtung:** `kommunikationstrainer.de` und `www.` leiten aktuell per 301 auf `www.mto-consulting.de` weiter. DNS bzw. Weiterleitung müssen umgestellt werden.
+  - `www` sollte per 301 auf die Apex-Domain leiten (oder umgekehrt, dann `SITE` anpassen, siehe unten).
+- **App:** bleibt auf `kommunikationstrainer.ai`. Die Landingpage verlinkt absolut dorthin:
+  - `/login`: „Zur App", „Web App starten", Demo-CTA,
+  - `/demo`,
+  - Rechtstexte im Footer: `/impressum`, `/datenschutz`, `/cookie-policy`, `/agb`. Sie existieren nur in der App und müssen dort erreichbar bleiben.
+- **Domainwechsel:** `SITE` in `tools/check.py` ändern und `https://kommunikationstrainer.de` in `index.html`, `en/index.html`, `sitemap.xml` und `robots.txt` ersetzen. Der Check meldet jede vergessene Stelle.
+
+### Server
+- `404.html` im Root wird von Vercel und Netlify automatisch verwendet. Bei Nginx/Apache als `error_page 404` / `ErrorDocument 404` eintragen. Die Seite nutzt absolute Pfade (`/assets/...`).
+- Range-Requests für `.mp4` müssen erlaubt sein (Standard bei Nginx, Apache und Vercel).
+- Caching: Für `assets/` ist ein langes Caching möglich, weil CSS/JS über `?v=` versioniert sind. Bilder, Videos und Schriften ändern ihren Namen bei Austausch nicht, also eher moderat (z. B. 1 Tag). HTML: `no-cache`.
+
+### Kontakt
+Bewusst **ohne Formular**: `mailto:info@immblend.de?subject=KommunikationsTrainer`, je zwei Links in DE und EN (`#kontakt`). Bitte so lassen.
+
+### Siegel
+`assets/img/bsfz-siegel.png` trägt die Jahreszahl 2026. Bei Verlängerung die Datei unter gleichem Namen ersetzen.
 
 ---
 
-## Offene Entscheidungen beim Go-live
-
-### 1. Domain und App-Routen
-Unter `kommunikationstrainer.ai` läuft heute die App. Die Landingpage verlinkt absolut auf diese App-Routen:
-
-| Route | Verwendung |
-|---|---|
-| `/login` | „Zur App", „Web App starten", Demo-CTA |
-| `/demo` | „Demo" in Navbar und Menü |
-| `/impressum`, `/datenschutz`, `/cookie-policy`, `/agb` | Footer |
-
-Wenn die Landingpage auf `/` der Domain geht, müssen diese Pfade weiter zur App führen (Rewrite oder Proxy), oder die App zieht auf eine Subdomain um. Dann müssen alle Links oben in **beiden** Sprachdateien angepasst werden. Die Rechtstexte gibt es nur in der App: Sie müssen erreichbar bleiben.
-
-### 2. Kontakt und Formular
-Es gibt **kein Formular**. Kontakt läuft über `mailto:info@immblend.de?subject=KommunikationsTrainer`, mit je zwei Links in DE und EN (Sektion `#kontakt`). Die alte Seite schickte an `stephan.lohss@immblend.de`, das wurde bewusst geändert.
-
-Falls ein Formular dazukommt: Im Repo `immblend_homepage` gibt es `assets/js/contact-form.js`. Es unterstützt einen eigenen Endpoint (`data-endpoint`) und Web3Forms (`data-web3forms-key`), mit Fallback auf mailto, und hat Lade-, Erfolgs-, Fehler- und Validierungszustände. Die Texte dort sind auf „Sie" geschrieben, hier gilt **„du"**. Der Datenschutz der App muss den Formular-Dienstleister dann nennen.
-
-### 3. SEO-Metadaten (noch domainlos)
-- `og:image` ist relativ (`assets/img/hero-poster.jpg`). Für Social-Previews auf eine absolute URL setzen.
-- `canonical` fehlt. `hreflang` ist relativ (`./`, `en/`) und sollte absolut werden.
-- Es gibt kein `sitemap.xml` und kein `robots.txt`.
-
-### 4. Google Fonts (DSGVO)
-Space Grotesk, Geist und Geist Mono werden von `fonts.googleapis.com` geladen. Für den Betrieb in Deutschland: selbst hosten (LG München I, 3 O 17493/20) und die `<link>`-Tags in beiden HTML-Dateien ersetzen. Bitte dieselben Schnitte verwenden: Space Grotesk 300/400/500, Geist 300–600, Geist Mono 400/500.
-
-### 5. Siegel
-`assets/img/bsfz-siegel.png` trägt die Jahreszahl 2026. Bei Verlängerung muss die Datei ersetzt werden (Name gleich lassen).
-
----
+## Bereits erledigt
+- Schriften lokal in `assets/fonts/` (Space Grotesk, Geist, Geist Mono als Variable Fonts, `latin` + `latin-ext`, OFL), kein Google-Fonts-Request.
+- SEO:
+  - `canonical`, `hreflang` (de, en, x-default), Open Graph und Twitter Card je Sprache,
+  - Vorschaubilder 1200×630 (`og-image.jpg`, `og-image-en.jpg`),
+  - `sitemap.xml` mit hreflang-Alternates und `robots.txt`.
+- 404-Seite (DE mit EN-Link, `noindex`).
 
 ## Struktur
 ```
 index.html            DE (Hauptsprache)
 en/index.html         EN, gleiche Struktur, Pfade mit ../
+404.html              Fehlerseite (absolute Pfade)
 assets/css/style.css  gesamtes Styling, Tokens in :root
 assets/js/main.js     Navbar, Menü, Reveals, Zähler, Videos, Trailer, Demo, Glas-Effekt
+assets/fonts/         lokale Schriften + fonts.css
 assets/img, assets/video
+sitemap.xml, robots.txt
 tools/check.py        Integritätsprüfung
 serve.py              lokaler Server mit Range-Support
 ```
 
-Nicht verwendet, aber im Repo: `assets/img/ibk-ai-logo.svg` (offizielles Logo in `currentColor`), `scene-17/74/80/95.jpg` und `training-anywhere-{900,1600}.jpg`. Sie können entfernt werden.
+Nicht verwendet, aber im Repo (können entfernt werden):
+- `assets/img/ibk-ai-logo.svg` (offizielles Logo in `currentColor`),
+- `scene-17/74/80/95.jpg`,
+- `training-anywhere-{900,1600}.jpg`.

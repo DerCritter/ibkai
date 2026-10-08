@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kommunikationstrainer.de/sitemap.xml

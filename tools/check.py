@@ -10,12 +10,16 @@ Prüft:
   4. Jeder data-*-Hook, den main.js abfragt, existiert in DE und EN.
   5. <html lang> ist "de" bzw. "en".
   6. Keine Datei über 95 MB (GitHub-Limit 100 MB).
+  7. Domain: canonical, hreflang, og:url, og:image, sitemap.xml und robots.txt nutzen dieselbe Domain (SITE);
+     og:image-Dateien existieren; keine externen Schrift-CDNs (DSGVO).
+  8. 404.html: Verweise gültig, gleiche Cache-Versionen wie die Seiten.
 Exit-Code 1 bei Fehlern.
 """
 import os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = {'de': 'index.html', 'en': 'en/index.html'}
+SITE = 'https://kommunikationstrainer.de'   # bei Domainwechsel hier und in HTML, sitemap.xml, robots.txt ersetzen
 errors = []
 
 
@@ -61,7 +65,7 @@ if hooks(html['de']) != hooks(html['en']):
 js = read('assets/js/main.js')
 for hook in sorted(set(re.findall(r'\[(data-[a-z-]+)', js))):
     for lang in PAGES:
-        if hook not in html[lang]:
+        if not re.search(r'\s' + hook + r'(?=[=\s>])', html[lang]):
             errors.append(f'[{lang}] main.js erwartet {hook}, fehlt im HTML')
 
 # 5. Sprache
@@ -78,7 +82,36 @@ for d, _, files in os.walk(ROOT):
         if os.path.getsize(p) > 95 * 1024 * 1024:
             errors.append(f'Datei über 95 MB: {os.path.relpath(p, ROOT)}')
 
+# 7. Domain und SEO
+for lang, p in PAGES.items():
+    h = html[lang]
+    for tag in ('rel="canonical"', 'hreflang="de"', 'hreflang="en"', 'hreflang="x-default"'):
+        m = re.search(r'<link[^>]*' + re.escape(tag) + r'[^>]*href="([^"]+)"', h)
+        if not m or not m.group(1).startswith(SITE + '/'):
+            errors.append(f'[{lang}] {tag} fehlt oder nicht auf {SITE}')
+    for prop in ('og:url', 'og:image', 'twitter:image'):
+        m = re.search(r'(?:property|name)="' + prop + r'" content="([^"]+)"', h)
+        if not m or not m.group(1).startswith(SITE + '/'):
+            errors.append(f'[{lang}] {prop} fehlt oder nicht auf {SITE}')
+        elif prop == 'og:image' and not os.path.exists(os.path.join(ROOT, m.group(1)[len(SITE) + 1:])):
+            errors.append(f'[{lang}] og:image-Datei fehlt: {m.group(1)}')
+    if re.search(r'fonts\.(googleapis|gstatic)\.com', h):
+        errors.append(f'[{lang}] externe Google Fonts eingebunden (DSGVO): lokal unter assets/fonts/ einbinden')
+for f in ('sitemap.xml', 'robots.txt'):
+    doms = set(re.findall(r'https?://[^/<"\s]+', read(f))) - {'http://www.sitemaps.org', 'http://www.w3.org'}
+    if doms != {SITE}:
+        errors.append(f'{f}: Domain {sorted(doms)} statt {SITE}')
+
+# 8. 404-Seite (absolute Pfade ab Webroot)
+nf = read('404.html')
+for ref in local_refs(nf):
+    path = ref.split('#')[0].split('?')[0].lstrip('/')
+    if path and not os.path.exists(os.path.join(ROOT, path)):
+        errors.append(f'[404] Verweis ohne Datei: {ref}')
+if [v for v in ver(nf) if v[0] == 'style.css'] != [v for v in ver(html['de']) if v[0] == 'style.css']:
+    errors.append('[404] style.css-Version weicht von index.html ab')
+
 if errors:
     print('FEHLER:\n- ' + '\n- '.join(errors))
     sys.exit(1)
-print('OK: Verweise, DE/EN-Struktur, JS-Hooks und Cache-Versionen stimmen.')
+print('OK: Verweise, DE/EN-Struktur, JS-Hooks, Cache-Versionen, Domain/SEO und 404 stimmen.')
