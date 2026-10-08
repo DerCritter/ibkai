@@ -697,3 +697,6 @@ p, li, b, dd, .lead, .option span, .msg { text-wrap: pretty; }
   .dotline__sep { display: none; }
 }
 @media (max-width: 960px) { .section-head--split { gap: 0; } }
+/* Sello BSFZ (FuE) en el footer, como en la web original */
+.footer__seal { display: inline-block; margin-top: 14px; margin-left: -10px; border-radius: 50%; }
+.footer__seal img { width: 96px; height: 96px; }

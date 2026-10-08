@@ -41,7 +41,7 @@ Navbar: **Portal · IBK AI-VR · Online-Kurse · Kontakt** + selector DE/EN + De
 8. Präsentieren («Ängste verlieren. Menschen gewinnen.»): vídeo en bucle del usuario (`[data-section-video]`: carga al acercarse, solo suena en pantalla; póster con reduced-motion/saveData)
 9. Interaktive Online-Kurse / Training-to-go (vídeo en bucle del usuario, `[data-section-video]`)
 10. Portal («Smart trainieren. Digital überzeugen.», 6 funciones) + Wirkung (cuenta de ejemplo del tráiler)
-11. Visión · 12. Kontakt (info@immblend.de) · Footer (legales enlazados a kommunikationstrainer.ai, LinkedIn prezp, BSFZ, Powered by ImmBlend)
+11. Visión · 12. Kontakt (info@immblend.de) · Footer (legales enlazados a kommunikationstrainer.ai, LinkedIn prezp, **sello BSFZ/FuE como imagen** `img/bsfz-siegel.png` (pedido del cliente; de la web original), Powered by ImmBlend)
 
 ## Reglas de contenido
 - Tratamiento **"du"** en toda la web alemana.
