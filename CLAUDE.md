@@ -23,7 +23,7 @@ assets/video/            logo-loop-{1920,1280}.mp4 (logo animado en bounce, sin 
                          training-{900,600}.mp4 (vídeo Veo del usuario para Online-Kurse, mismo tratamiento)
 ```
 - Fuentes: tráiler `../ibkai_ trailer/mp4_export/IBKAI-Trailer_V3.mp4` (1:48), logo animado (Veo) en Downloads, logo oficial `../ib_kommunikationstrainer_AI/exports/IBKAI_PNG_SVG/IBKAI_LOGO_SVG.svg`.
-- Dominio de la landing: **https://kommunikationstrainer.de** (canonical, hreflang, og, sitemap, robots); la app sigue en kommunikationstrainer.ai. Fuentes alojadas en `assets/fonts/` (sin Google Fonts). `404.html`. Contacto solo por email, sin formulario (decisión del usuario).
+- Dominio de la landing: **https://kommunikationstrainer.ai** (misma que la app Next.js; la landing ocupa `/` y `/en` sin barra final, `/assets/`, robots, sitemap; app en /login, /demo, legales). Fuentes alojadas en `assets/fonts/` (sin Google Fonts). `404.html`. Contacto solo por email, sin formulario (decisión del usuario).
 - Entrega: `HANDOFF.md` (programador) + `AGENTS.md` (reglas para su IA) + `tools/check.py` (también como GitHub Action). Tag `handover-2026-10-08`.
 - Servidor: `python3 serve.py 5180` en el **panel Terminal** (http.server de Python no soporta Range y los vídeos no se pueden adelantar) (Bash en segundo plano se corta). Caché: subir `?v=` de style.css / main.js en **ambos** HTML.
 

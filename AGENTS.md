@@ -27,7 +27,7 @@ Statische Landingpage für den KommunikationsTrainer (IBK AI). Kontext für Mens
 11. **Mobile (≤640 px):** Zeilenumbrüche sind gezielt gesetzt (`text-wrap: balance/pretty`, `.dotline`, Footer zweizeilig, Portal als Wisch-Karussell, IBK-AI-VR als kompakte Liste). Neue Inhalte genauso behandeln: keine einzelnen Wörter am Zeilenende, kein „·" am Zeilenanfang.
 12. **Barrierefreiheit:** `alt`, `aria-label`, `aria-pressed` bei Auswahl-Buttons, `prefers-reduced-motion` (zeigt das Poster statt Video). Nicht entfernen.
 13. **Keine externen Requests:** keine CDNs, keine Google Fonts, keine Tracking-Skripte ohne Rücksprache (DSGVO). Schriften liegen in `assets/fonts/`.
-14. **Domain** `https://kommunikationstrainer.de` steht in canonical, hreflang, og:*, twitter:image, `sitemap.xml` und `robots.txt`. Neue Seiten bekommen dieselben Metadaten und einen Eintrag in der Sitemap. App-Links bleiben auf `kommunikationstrainer.ai`.
+14. **Domain** `https://kommunikationstrainer.ai` steht in canonical, hreflang, og:*, twitter:image, `sitemap.xml` und `robots.txt`. Neue Seiten bekommen dieselben Metadaten und einen Eintrag in der Sitemap. EN-URL ohne Slash (`/en`), weil die Next.js-App `/en/` umleitet. App-Routen (`/login`, `/demo`, Rechtstexte) gehören der App.
 15. **Kontakt ohne Formular** (mailto). Kein Formular hinzufügen.
 16. `404.html` nutzt absolute Pfade und muss dieselbe `style.css`-Version wie die Seiten laden.
 

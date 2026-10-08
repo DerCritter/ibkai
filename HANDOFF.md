@@ -1,6 +1,6 @@
 # Übergabe · KommunikationsTrainer Landingpage (IBK AI)
 
-Statische Website (HTML, CSS, Vanilla-JS). Kein Build-Schritt, keine Abhängigkeiten, keine externen Requests (Schriften liegen lokal). Der Repo-Inhalt wird 1:1 als Webroot von **https://kommunikationstrainer.de** ausgeliefert.
+Statische Website (HTML, CSS, Vanilla-JS). Kein Build-Schritt, keine Abhängigkeiten, keine externen Requests (Schriften liegen lokal). Ziel: Startseite von **https://kommunikationstrainer.ai** (gleiche Domain wie die App, siehe „Domain“).
 
 Übergabestand: Git-Tag `handover-2026-10-08`. Bei Problemen immer zuerst dagegen vergleichen (`git diff handover-2026-10-08`).
 
@@ -28,15 +28,22 @@ Lokal: `python3 serve.py` (Port 5180, mit Range-Support. Der Standard-`http.serv
 
 ## Für den Go-live
 
-### Domain
-- **Landingpage:** `kommunikationstrainer.de`. Alle absoluten URLs (canonical, hreflang, og:url, og:image, twitter:image, sitemap, robots) zeigen bereits dorthin.
-  - **Achtung:** `kommunikationstrainer.de` und `www.` leiten aktuell per 301 auf `www.mto-consulting.de` weiter. DNS bzw. Weiterleitung müssen umgestellt werden.
-  - `www` sollte per 301 auf die Apex-Domain leiten (oder umgekehrt, dann `SITE` anpassen, siehe unten).
-- **App:** bleibt auf `kommunikationstrainer.ai`. Die Landingpage verlinkt absolut dorthin:
-  - `/login`: „Zur App", „Web App starten", Demo-CTA,
-  - `/demo`,
-  - Rechtstexte im Footer: `/impressum`, `/datenschutz`, `/cookie-policy`, `/agb`. Sie existieren nur in der App und müssen dort erreichbar bleiben.
-- **Domainwechsel:** `SITE` in `tools/check.py` ändern und `https://kommunikationstrainer.de` in `index.html`, `en/index.html`, `sitemap.xml` und `robots.txt` ersetzen. Der Check meldet jede vergessene Stelle.
+### Domain: gleiche Domain wie die App
+Die Landingpage ersetzt die heutige Startseite von **https://kommunikationstrainer.ai**. Alle absoluten URLs zeigen bereits dorthin: canonical, hreflang, og:url, og:image, twitter:image, sitemap und robots. DE liegt unter `/`, EN unter `/en`.
+
+Die App ist Next.js (Pages Router, i18n `de`/`en`, Default `de`; laut `__NEXT_DATA__` statischer Export). Die Landingpage belegt diese Pfade:
+
+| Pfad | Heute in der App | Hinweis |
+|---|---|---|
+| `/` | App-Startseite | wird durch `index.html` ersetzt |
+| `/en` | Locale-Route der App | wird durch `en/index.html` ersetzt. URLs bewusst **ohne** Slash (die App leitet `/en/` per 308 auf `/en` um). Relative Pfade funktionieren mit und ohne Slash. |
+| `/assets/*` | frei (404) | Landing-Assets inkl. Schriften. Die App nutzt `/_next`, `/fonts`, `/images`. |
+| `/robots.txt`, `/sitemap.xml` | frei (404) | aus diesem Repo. Falls die App öffentliche Seiten hat, die indexiert werden sollen, ergänzen. |
+| `/404.html` | Next-eigene 404 | entweder diese Datei oder die 404 der App verwenden |
+
+Unverändert in der App bleiben `/login` („Zur App", „Web App starten", Demo-CTA), `/demo` sowie die Rechtstexte `/impressum`, `/datenschutz`, `/cookie-policy` und `/agb`. Die Landingpage verlinkt sie absolut.
+
+**Domainwechsel:** `SITE` in `tools/check.py` ändern und die Domain in `index.html`, `en/index.html`, `sitemap.xml` und `robots.txt` ersetzen. Der Check meldet jede vergessene Stelle.
 
 ### Server
 - `404.html` im Root wird von Vercel und Netlify automatisch verwendet. Bei Nginx/Apache als `error_page 404` / `ErrorDocument 404` eintragen. Die Seite nutzt absolute Pfade (`/assets/...`).

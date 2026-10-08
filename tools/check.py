@@ -19,7 +19,7 @@ import os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = {'de': 'index.html', 'en': 'en/index.html'}
-SITE = 'https://kommunikationstrainer.de'   # bei Domainwechsel hier und in HTML, sitemap.xml, robots.txt ersetzen
+SITE = 'https://kommunikationstrainer.ai'   # bei Domainwechsel hier und in HTML, sitemap.xml, robots.txt ersetzen
 errors = []
 
 
